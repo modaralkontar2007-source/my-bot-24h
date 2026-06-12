@@ -1,22 +1,7 @@
 import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
-from flask import Flask
-from threading import Thread
 
-# تشغيل سيرفر ويب وهمي لإبقاء المنصة مستيقظة 24 ساعة
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "Bot is running 24/7!"
-
-def run_web_server():
-    app.run(host='0.0.0.0', port=8080)
-
-def keep_alive():
-    t = Thread(target=run_web_server)
-    t.start()
-
+# التوكن والمعرف الخاص بك
 TOKEN = "8211820774:AAFZ8iZ7QpHkzWv1Wo0y02AESw3kUzXhzTo"
 SUPPORT_USER = "@soso100gam"
 
@@ -132,7 +117,5 @@ def handle_messages(message):
     elif text == "📜 شراء شهادة تاسع": send_payment_msg(message, text, "1800$")
     elif text == "📜 شراء شهادة بكالوريا": send_payment_msg(message, text, "2000$")
 
-if __name__ == "__main__":
-    keep_alive() # تشغيل السيرفر لحماية البوت من النوم
-    bot.infinity_polling()
-  
+bot.infinity_polling()
+    
